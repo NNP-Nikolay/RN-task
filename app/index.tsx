@@ -1,10 +1,11 @@
-import { Text, View, StyleSheet } from 'react-native';
+import SafeScreen from '@/components/templates/SafeScreen';
+import { Text, StyleSheet } from 'react-native';
 
 export default function Auth() {
   return (
-    <View style={styles.container}>
+    <SafeScreen style={styles.container}>
       <Text>AUTH FORM</Text>
-    </View>
+    </SafeScreen>
   );
 }
 
