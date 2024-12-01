@@ -25,7 +25,7 @@ export default function AuthForm() {
       const token = await AsyncStorage.getItem(STORAGE_KEY);
       if (token) {
         dispatch(setIsAuthenticated(true));
-        router.push('/feed');
+        router.push('/(tabs)');
       }
     };
     checkAuthentication();
@@ -55,7 +55,7 @@ export default function AuthForm() {
       await AsyncStorage.setItem(STORAGE_KEY, token);
       dispatch(setToken(token));
       dispatch(setIsAuthenticated(true));
-      router.push('/feed');
+      router.push('/(tabs)');
     } else {
       console.error('Email or password is not valid');
     }
