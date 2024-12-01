@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
+import { SafeAreaView, View, StyleSheet, ViewStyle } from 'react-native';
 
 interface SafeScreenProps {
   children: React.ReactNode;
@@ -7,8 +7,10 @@ interface SafeScreenProps {
 
 export default function SafeScreen({ children, style }: SafeScreenProps) {
   return (
-    <SafeAreaView style={[styles.safeArea, style]}>
-      {children}
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#89A8B2', width: '100%'}}>
+      <View style={[styles.safeArea, style]}>
+        {children}
+      </View>
     </SafeAreaView>
   );
 }
@@ -16,7 +18,6 @@ export default function SafeScreen({ children, style }: SafeScreenProps) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
     padding: 20,
   },
 });
