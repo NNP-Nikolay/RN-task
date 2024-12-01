@@ -1,12 +1,13 @@
 import { TextInput } from "react-native-gesture-handler";
 import { SafeScreen } from "@/components";
-import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Text, TouchableOpacity, View, Alert } from 'react-native';
 import { Controller, useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import { setIsAuthenticated, setToken } from '@/redux/slices/authSlice';
 import { useRouter } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StyleSheet } from "react-native";
 
 type FormData = { email: string, password: string };
 
@@ -57,7 +58,7 @@ export default function AuthForm() {
       dispatch(setIsAuthenticated(true));
       router.push('/(tabs)');
     } else {
-      console.error('Email or password is not valid');
+      Alert.alert('Error', 'Email or password is not valid. Please try again.');
     }
   };
 
@@ -125,6 +126,7 @@ export default function AuthForm() {
     </SafeScreen>
   );
 }
+
 
 const styles = StyleSheet.create({
   button: {
