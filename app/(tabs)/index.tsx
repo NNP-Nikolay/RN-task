@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text} from 'react-native';
+import { StyleSheet} from 'react-native';
 import { SafeScreen } from '@/components';
+import TabLayout from './_layout';
+import CardsList from '@/components/lists/CardsList';
 
-const Feed = () => {
-
+export default function Feed() {
   return (
     <SafeScreen style={styles.container}>
-      <Text>Feed</Text>
+      <CardsList />
+      <TabLayout />
     </SafeScreen>
   );
 };
@@ -17,5 +19,3 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
 });
-
-export default Feed;

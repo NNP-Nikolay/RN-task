@@ -1,2 +1,2 @@
 export { default as SafeScreen } from './templates/SafeScreen';
-export { default as AuthForm } from './auth-form/AuthForm';
+export { default as AuthForm } from './forms/AuthForm';
