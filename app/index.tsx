@@ -3,7 +3,7 @@ import SafeScreen from '@/components/templates/SafeScreen';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-export default function Auth() {
+export default function AuthScreen() {
   return (
     <SafeScreen style={styles.container}>
       <AuthForm />

@@ -5,7 +5,7 @@ const api = axios.create({
   baseURL: 'https://picsum.photos/v2',
 });
 
-export const getImagesList = async (page: number = 1, limit: number = 10) => {
+export const getDataImagesList = async (page: number = 1, limit: number = 10) => {
   try {
     const response = await api.get('/list', { params: { page, limit } });
     return response.data;

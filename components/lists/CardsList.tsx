@@ -1,5 +1,5 @@
 import SafeScreen from "@/components/templates/SafeScreen";
-import { getImagesList } from "@/service/imagesListApi";
+import { getDataImagesList } from "@/service/imagesListApi";
 import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, FlatList, RefreshControl, Text, ActivityIndicator } from "react-native";
 import CardImage from "../cards/CardImage";
@@ -18,7 +18,7 @@ export default function CardsList() {
   const loadImages = useCallback(async () => {
     setIsLoading(true);
     try {
-      const newImages = await getImagesList(page);
+      const newImages = await getDataImagesList(page);
       setImages((prevImages) => [...prevImages, ...newImages]);
     } catch (e) {
       console.error(e);
@@ -46,6 +46,7 @@ export default function CardsList() {
 
   return (
     <SafeScreen style={styles.container}>
+      <Text style={styles.galleryText}>Gallery</Text>
       <FlatList
         data={images}
         keyExtractor={(_, index) => index.toString()}
@@ -66,5 +67,15 @@ export default function CardsList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  galleryText: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    marginVertical: 10,
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
   },
 });

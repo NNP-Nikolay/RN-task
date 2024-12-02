@@ -4,7 +4,7 @@ import { SafeScreen } from '@/components';
 import TabLayout from './_layout';
 import CardsList from '@/components/lists/CardsList';
 
-export default function Feed() {
+export default function FeedScreen() {
   return (
     <SafeScreen style={styles.container}>
       <CardsList />
