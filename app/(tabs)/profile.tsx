@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getDataUserProfile } from '@/service/userProfileApi';
-import AuthScreen from '..';
+import { 
+  View, Text, Image,
+  StyleSheet, ActivityIndicator, 
+  Alert, TouchableOpacity
+} from 'react-native';
 
 interface UserTypes {
   avatar: string;

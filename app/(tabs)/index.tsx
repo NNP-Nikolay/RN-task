@@ -1,8 +1,7 @@
-import React from 'react';
+import TabLayout from './_layout';
 import { StyleSheet} from 'react-native';
 import { SafeScreen } from '@/components';
-import TabLayout from './_layout';
-import CardsList from '@/components/lists/CardsList';
+import { CardsList} from '@/components';
 
 export default function FeedScreen() {
   return (

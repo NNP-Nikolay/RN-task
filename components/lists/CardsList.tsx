@@ -1,8 +1,12 @@
-import SafeScreen from "@/components/templates/SafeScreen";
-import { getDataImagesList } from "@/service/imagesListApi";
 import { useCallback, useEffect, useState } from "react";
-import { StyleSheet, FlatList, RefreshControl, Text, ActivityIndicator } from "react-native";
-import CardImage from "../cards/CardImage";
+import { SafeScreen } from "@/components";
+import { CardImage } from "@/components";
+import { getDataImagesList } from "@/service/imagesListApi";
+import { 
+  StyleSheet, FlatList,
+  RefreshControl, Text,
+  ActivityIndicator
+} from "react-native";
 
 type ImageData = {
   download_url: string;

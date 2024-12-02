@@ -1,4 +1,7 @@
-import { SafeAreaView, View, StyleSheet, ViewStyle } from 'react-native';
+import { 
+  SafeAreaView, View,
+  StyleSheet, ViewStyle
+} from 'react-native';
 
 interface SafeScreenProps {
   children: React.ReactNode;

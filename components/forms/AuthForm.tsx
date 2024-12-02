@@ -1,13 +1,17 @@
 import { TextInput } from "react-native-gesture-handler";
-import { SafeScreen } from "@/components";
-import { Animated, Text, TouchableOpacity, View, Alert } from 'react-native';
+import { useRouter } from "expo-router";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Controller, useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import { setIsAuthenticated, setToken } from '@/redux/slices/authSlice';
-import { useRouter } from "expo-router";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { StyleSheet } from "react-native";
+import { SafeScreen } from "@/components";
+import {
+  Animated, Text,
+  TouchableOpacity,
+  View, Alert,
+  StyleSheet }
+from 'react-native';
 
 type FormData = { email: string, password: string };
 

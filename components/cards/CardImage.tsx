@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { 
+  View, Text,
+  Image, StyleSheet 
+} from "react-native";
 
 type CardImageProps = {
   download_url: string;

@@ -1,7 +1,6 @@
-import { AuthForm } from '@/components';
-import SafeScreen from '@/components/templates/SafeScreen';
-import React from 'react';
 import { StyleSheet } from 'react-native';
+import { AuthForm } from '@/components';
+import { SafeScreen } from '@/components';
 
 export default function AuthScreen() {
   return (
