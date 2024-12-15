@@ -55,7 +55,7 @@ export default function AuthForm() {
   const onSubmit = async (data: FormData) => {
     const { email, password } = data;
 
-    if (email === 'nnp@gmail.com' && password === 'admin123') {
+    if (email === 'helloapp@gmail.com' && password === 'admin123') {
       const token = 'fakeToken';
       await AsyncStorage.setItem(STORAGE_KEY, token);
       dispatch(setToken(token));
@@ -89,7 +89,6 @@ export default function AuthForm() {
               message: "Email is not valid",
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
             },
-            required: "Email is required"
           }}
         />
       </View>
