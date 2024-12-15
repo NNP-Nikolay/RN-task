@@ -1,26 +1,32 @@
 import { TextInput } from "react-native-gesture-handler";
 import { useRouter } from "expo-router";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Controller, useForm } from "react-hook-form";
 import { useEffect, useRef } from "react";
-import { useDispatch } from 'react-redux';
-import { setIsAuthenticated, setToken } from '@/redux/slices/authSlice';
+import { useDispatch } from "react-redux";
+import { setIsAuthenticated, setToken } from "@/redux/slices/authSlice";
 import { SafeScreen } from "@/components";
 import {
-  Animated, Text,
+  Animated,
+  Text,
   TouchableOpacity,
-  View, Alert,
-  StyleSheet }
-from 'react-native';
+  View,
+  Alert,
+  StyleSheet,
+} from "react-native";
 
-type FormData = { email: string, password: string };
+type FormData = { email: string; password: string };
 
-const STORAGE_KEY = 'token';
+const STORAGE_KEY = "token";
 
 export default function AuthForm() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { control, formState: { errors }, handleSubmit } = useForm<FormData>();
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormData>();
 
   const emailErrorOpacity = useRef(new Animated.Value(0)).current;
   const passwordErrorOpacity = useRef(new Animated.Value(0)).current;
@@ -30,7 +36,7 @@ export default function AuthForm() {
       const token = await AsyncStorage.getItem(STORAGE_KEY);
       if (token) {
         dispatch(setIsAuthenticated(true));
-        router.push('/(tabs)');
+        router.push("/(tabs)");
       }
     };
     checkAuthentication();
@@ -55,14 +61,14 @@ export default function AuthForm() {
   const onSubmit = async (data: FormData) => {
     const { email, password } = data;
 
-    if (email === 'helloapp@gmail.com' && password === 'admin123') {
-      const token = 'fakeToken';
+    if (email === "helloapp@gmail.com" && password === "admin123") {
+      const token = "fakeToken";
       await AsyncStorage.setItem(STORAGE_KEY, token);
       dispatch(setToken(token));
       dispatch(setIsAuthenticated(true));
-      router.push('/(tabs)');
+      router.push("/(tabs)");
     } else {
-      Alert.alert('Error', 'Email or password is not valid. Please try again.');
+      Alert.alert("Error", "Email or password is not valid. Please try again.");
     }
   };
 
@@ -87,7 +93,7 @@ export default function AuthForm() {
           rules={{
             pattern: {
               message: "Email is not valid",
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             },
           }}
         />
@@ -114,13 +120,15 @@ export default function AuthForm() {
           rules={{
             minLength: {
               message: "Password must be at least 8 characters long",
-              value: 8
+              value: 8,
             },
             required: "Password is required",
           }}
         />
       </View>
-      <Animated.Text style={[styles.errorText, { opacity: passwordErrorOpacity }]}>
+      <Animated.Text
+        style={[styles.errorText, { opacity: passwordErrorOpacity }]}
+      >
         {errors.password?.message}
       </Animated.Text>
       <TouchableOpacity onPress={handleSubmit(onSubmit)} style={styles.button}>
@@ -130,62 +138,61 @@ export default function AuthForm() {
   );
 }
 
-
 const styles = StyleSheet.create({
   button: {
-    alignItems: 'center',
-    backgroundColor: '#4A6572',
+    alignItems: "center",
+    backgroundColor: "#4A6572",
     borderRadius: 10,
     elevation: 5,
     marginVertical: 10,
     paddingHorizontal: 20,
     paddingVertical: 15,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { height: 4, width: 0 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
-    width: '100%',
+    width: "100%",
   },
   buttonText: {
-    color: 'white',
+    color: "white",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   errorText: {
-    color: 'red',
+    color: "red",
     fontSize: 14,
     marginBottom: 10,
   },
   input: {
     borderRadius: 10,
     borderWidth: 0,
-    color: 'white',
+    color: "white",
     fontSize: 16,
     paddingHorizontal: 20,
     paddingVertical: 15,
   },
   inputContainer: {
-    backgroundColor: '#6E8E99',
+    backgroundColor: "#6E8E99",
     borderRadius: 10,
     elevation: 5,
     marginVertical: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { height: 2, width: 0 },
     shadowOpacity: 0.2,
     shadowRadius: 5,
-    width: '100%',
+    width: "100%",
   },
   title: {
-    color: 'white',
+    color: "white",
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
-    textAlign: 'center',
-    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textAlign: "center",
+    textShadowColor: "rgba(0, 0, 0, 0.25)",
     textShadowOffset: { height: 2, width: 2 },
     textShadowRadius: 4,
   },

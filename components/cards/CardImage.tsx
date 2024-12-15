@@ -1,7 +1,4 @@
-import { 
-  View, Text,
-  Image, StyleSheet 
-} from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 type CardImageProps = {
   download_url: string;
@@ -11,10 +8,7 @@ type CardImageProps = {
 export default function CardImage({ download_url, author }: CardImageProps) {
   return (
     <View style={styles.cardContainer}>
-        <Image
-          source={{ uri: download_url }}
-          style={styles.image}
-        />
+      <Image source={{ uri: download_url }} style={styles.image} />
       <View style={styles.overlay}>
         <Text style={styles.authorText}>{author}</Text>
       </View>
@@ -25,32 +19,32 @@ export default function CardImage({ download_url, author }: CardImageProps) {
 const styles = StyleSheet.create({
   cardContainer: {
     borderRadius: 15,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginBottom: 15,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 250,
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 10,
     left: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
   },
   authorText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   loader: {
-    width: '100%',
+    width: "100%",
     height: 250,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

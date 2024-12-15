@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getDataUserProfile } from '@/service/userProfileApi';
-import { 
-  View, Text, Image,
-  StyleSheet, ActivityIndicator, 
-  Alert, TouchableOpacity
-} from 'react-native';
+import { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getDataUserProfile } from "@/service/userProfileApi";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ActivityIndicator,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 
 interface UserTypes {
   avatar: string;
@@ -15,7 +19,7 @@ interface UserTypes {
   email: string;
 }
 
-const STORAGE_KEY = 'token';
+const STORAGE_KEY = "token";
 
 export default function ProfileScreen() {
   const [user, setUser] = useState<UserTypes | null>(null);
@@ -27,7 +31,7 @@ export default function ProfileScreen() {
       try {
         const token = await AsyncStorage.getItem(STORAGE_KEY);
         if (!token) {
-          router.replace('/home');
+          router.replace("/home");
           return;
         }
 
@@ -35,19 +39,19 @@ export default function ProfileScreen() {
 
         const userData = await getDataUserProfile(randomId);
         setUser(userData);
-      } catch (error) {
-        Alert.alert('Error', 'Failed to load user data. Please try again.');
+      } catch {
+        Alert.alert("Error", "Failed to load user data. Please try again.");
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchUserData();
-  }, []);
+  }, [router]);
 
   const handleLogout = async () => {
     await AsyncStorage.removeItem(STORAGE_KEY);
-    router.replace('/home');
+    router.replace("/home");
   };
 
   if (isLoading) {
@@ -69,9 +73,11 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <Image source={{ uri: user.avatar }} style={styles.avatar} />
-      <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
+      <Text style={styles.name}>
+        {user.first_name} {user.last_name}
+      </Text>
       <Text style={styles.email}>{user.email}</Text>
-      
+
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <Text style={styles.logoutButtonText}>Logout</Text>
       </TouchableOpacity>
@@ -82,10 +88,10 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
-    backgroundColor: '#6E8E99',
+    backgroundColor: "#6E8E99",
   },
   avatar: {
     width: 100,
@@ -95,37 +101,37 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
-    color: '#FFFFFF',
+    color: "#FFFFFF",
   },
   email: {
     fontSize: 16,
-    color: '#dfe6e9',
+    color: "#dfe6e9",
     marginBottom: 20,
   },
   errorText: {
     fontSize: 18,
-    color: '#FF6347',
-    textAlign: 'center',
+    color: "#FF6347",
+    textAlign: "center",
   },
   logoutButton: {
-    backgroundColor: '#80C7FF',
+    backgroundColor: "#80C7FF",
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 5,
     marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     elevation: 3,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
   logoutButtonText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });

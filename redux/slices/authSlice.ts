@@ -1,6 +1,6 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -14,7 +14,7 @@ const initialState: AuthState = {
 
 const authSlice = createSlice({
   initialState,
-  name: 'auth',
+  name: "auth",
   reducers: {
     setIsAuthenticated(state, action: PayloadAction<boolean>) {
       state.isAuthenticated = action.payload;
@@ -22,11 +22,11 @@ const authSlice = createSlice({
     setToken(state, action: PayloadAction<string | undefined>) {
       state.token = action.payload;
       if (action.payload) {
-        AsyncStorage.setItem('token', action.payload);
+        AsyncStorage.setItem("token", action.payload);
       } else {
-        AsyncStorage.removeItem('token');
+        AsyncStorage.removeItem("token");
       }
-    }
+    },
   },
 });
 

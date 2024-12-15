@@ -2,10 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import { SafeScreen } from "@/components";
 import { CardImage } from "@/components";
 import { getDataImagesList } from "@/service/imagesListApi";
-import { 
-  StyleSheet, FlatList,
-  RefreshControl, Text,
-  ActivityIndicator
+import {
+  StyleSheet,
+  FlatList,
+  RefreshControl,
+  Text,
+  ActivityIndicator,
 } from "react-native";
 
 type ImageData = {
@@ -62,7 +64,9 @@ export default function CardsList() {
         }
         onEndReached={handleEndReached}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={isLoading ? <ActivityIndicator size="large" color="#FFFFFF" /> : null}
+        ListFooterComponent={
+          isLoading ? <ActivityIndicator size="large" color="#FFFFFF" /> : null
+        }
       />
     </SafeScreen>
   );
@@ -74,11 +78,11 @@ const styles = StyleSheet.create({
   },
   galleryText: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#FFFFFF",
+    textAlign: "center",
     marginVertical: 10,
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowColor: "rgba(0, 0, 0, 0.5)",
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 3,
   },

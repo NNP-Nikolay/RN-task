@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
-import type { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
-import authSlice from './slices/authSlice';
+import type { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import authSlice from "./slices/authSlice";
 
 const store = configureStore({
   reducer: {
